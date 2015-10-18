@@ -5,7 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Sitter.create(name: 'Letícia', address: 'Rua General Lima e Silva, 500 - Centro Histórico, Porto Alegre - RS')
-Sitter.create(name: 'Ezequiel', address: 'R. Cel. Genuino, 149 - Centro Histórico, Porto Alegre - Rio Grande do Sul')
-Sitter.create(name: 'Matheus', address: 'Rua João Alfredo, 400 - Cidade Baixa, Porto Alegre - RS')
-Sitter.create(name: 'Lúcia', address: 'Rua da República, 199 - Cidade Baixa, Porto Alegre - RS')
+Sitter.create(name: 'Letícia', address: 'Rua General Lima e Silva, 500 - Centro Histórico, Porto Alegre - RS',
+              latitude: -30.0376441, longitude: -51.2222909)
+Sitter.create(name: 'Ezequiel', address: 'R. Cel. Genuino, 149 - Centro Histórico, Porto Alegre - Rio Grande do Sul',
+              latitude: -30.035148, longitude: -51.2267789)
+Sitter.create(name: 'Matheus', address: 'Rua João Alfredo, 400 - Cidade Baixa, Porto Alegre - RS',
+              latitude: -30.0406009, longitude: -51.2255778)
+Sitter.create(name: 'Lúcia', address: 'Rua da República, 199 - Cidade Baixa, Porto Alegre - RS',
+              latitude: -30.0375021, longitude: -51.22195079999999)
