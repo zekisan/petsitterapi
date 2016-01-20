@@ -33,3 +33,5 @@ Sitter.create([{name: 'Letícia', address: 'Rua General Lima e Silva, 500 - Cent
                 about_me: 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.',
                 latitude: -30.0375021, longitude: -51.22195079999999, photo: 'sitter4', header_background: 'header_background_4',
                 animals: [animals[0], animals[1], animals[3]], cares: [cares[0], cares[1]]}])
+
+PetOwner.create(name: 'Ezequiel Guilherme', address: 'R. Cel. Genuino, 149 - Centro Histórico, Porto Alegre - Rio Grande do Sul')
