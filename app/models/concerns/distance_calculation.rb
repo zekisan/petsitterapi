@@ -4,7 +4,8 @@ module Concerns
 
     class_methods do
       def search_near_sitters(animals)
-        sitters_for_animals = Sitter.joins(:animals).where(animals: {name: animals})
+        sitters_for_animals = Sitter.all
+        sitters_for_animals = sitters_for_animals.joins(:animals).where(animals: {name: animals}) if animals
 
         sitters_for_animals.all.map do |s|
           current_sitter_distance = Geokit::Geocoders::GoogleGeocoder.geocode s.address
