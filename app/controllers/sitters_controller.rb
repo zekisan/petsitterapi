@@ -5,7 +5,6 @@ class SittersController < ApplicationController
   end
 
   def search
-    sitters = Sitter.search_near_sitters params[:animals]
-    render json: sitters.as_json
+
   end
 end
