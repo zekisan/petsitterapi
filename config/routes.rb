@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
       resources :pet_owners do
         member do
-          get 'search_sitters'
+          post 'search_sitters'
         end
       end
     end
