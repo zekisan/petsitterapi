@@ -4,7 +4,4 @@ class SittersController < ApplicationController
     render json: sitters.as_json(include: [{animals: { only: :name }}, {cares: { only: :name }}])
   end
 
-  def search
-
-  end
 end

@@ -6,4 +6,6 @@ class Sitter < ActiveRecord::Base
   has_many :care_sitters
   has_many :cares, through: :care_sitters
 
+  has_many :contacts
+
 end
