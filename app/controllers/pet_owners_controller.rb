@@ -8,7 +8,12 @@ class PetOwnersController < ApplicationController
   end
 
   def request_contact
-    @pet_owner.contacts.build(sitter_id: params[:sitter_id])
+    @pet_owner.contacts.build(sitter_id: params[:sitter_id],
+                              date_start: params[:date_start].to_date,
+                              date_final: params[:date_final].to_date,
+                              time_start: params[:time_start],
+                              time_final: params[:time_final]
+    )
 
     if @pet_owner.save
       render json: 'ok'
