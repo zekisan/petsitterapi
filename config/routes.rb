@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   scope '/api' do
     scope '/v1' do
-      resources :sitters
+      resources :sitters do
+        member do
+          get 'contacts'
+        end
+      end
 
       resources :pet_owners do
         member do
