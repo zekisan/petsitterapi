@@ -6,8 +6,8 @@ class SittersController < ApplicationController
   end
 
   def contacts
-    owner = PetOwner.find(params[:id])
-    render json: owner.contacts.as_json(include: [:sitter, :pet_owner])
+    sitter = Sitter.find(params[:id])
+    render json: sitter.contacts.as_json(include: [:sitter, :pet_owner])
   end
 
 end
