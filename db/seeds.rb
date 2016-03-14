@@ -34,4 +34,4 @@ Sitter.create([{name: 'Letícia', address: 'Rua General Lima e Silva, 500 - Cent
                 latitude: -30.0375021, longitude: -51.22195079999999, photo: 'sitter4', header_background: 'header_background_4',
                 animals: [animals[1]], cares: [cares[0], cares[1]]}])
 
-PetOwner.create(name: 'Ezequiel Guilherme', address: 'R. Cel. Genuino, 149 - Centro Histórico, Porto Alegre - Rio Grande do Sul', latitude: -30.035148, longitude: -51.2267789)
+PetOwner.create(name: 'Ezequiel Guilherme', district: 'Centro Histórico', address: 'R. Cel. Genuino, 149 - Centro Histórico, Porto Alegre - Rio Grande do Sul', latitude: -30.035148, longitude: -51.2267789)
