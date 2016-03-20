@@ -8,11 +8,12 @@ class PetOwnersController < ApplicationController
   end
 
   def request_contact
-    @pet_owner.contacts.build(sitter_id: params[:sitter_id],
-                              date_start: params[:date_start],
-                              date_final: params[:date_final],
-                              time_start: params[:time_start],
-                              time_final: params[:time_final]
+    @pet_owner.contacts.build(sitter_id: pet_owners_params[:sitter_id],
+                              date_start: pet_owners_params[:date_start],
+                              date_final: pet_owners_params[:date_final],
+                              time_start: pet_owners_params[:time_start],
+                              time_final: pet_owners_params[:time_final],
+                              animal_contacts_attributes: pet_owners_params[:animal_contacts]
     )
 
     if @pet_owner.save
@@ -26,5 +27,9 @@ class PetOwnersController < ApplicationController
 
   def get_petowner
     @pet_owner = PetOwner.find params[:id]
+  end
+
+  def pet_owners_params
+    params.permit!
   end
 end

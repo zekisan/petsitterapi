@@ -10,5 +10,12 @@ class CreateContacts < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    create_table :animal_contacts do |t|
+      t.references :animal, index: true
+      t.references :contact, index: true
+
+      t.timestamps null: false
+    end
   end
 end
