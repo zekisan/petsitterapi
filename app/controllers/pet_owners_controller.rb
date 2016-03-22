@@ -13,6 +13,7 @@ class PetOwnersController < ApplicationController
                               date_final: pet_owners_params[:date_final],
                               time_start: pet_owners_params[:time_start],
                               time_final: pet_owners_params[:time_final],
+                              total_value: pet_owners_params[:total_value].to_s,
                               animal_contacts_attributes: pet_owners_params[:animal_contacts]
     )
 
