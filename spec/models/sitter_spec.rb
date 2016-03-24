@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: sitters
+#
+#  id                :integer          not null, primary key
+#  name              :string
+#  address           :string
+#  latitude          :decimal(18, 16)
+#  longitude         :decimal(18, 16)
+#  photo             :string
+#  header_background :string
+#  district          :string
+#  value_hour        :decimal(5, 2)
+#  value_shift       :decimal(5, 2)
+#  value_day         :decimal(5, 2)
+#  about_me          :text
+#
+
 require 'rails_helper'
 
 RSpec.describe Sitter, type: :model do
