@@ -13,6 +13,12 @@ Rails.application.routes.draw do
           post 'request_contact'
         end
       end
+
+      resources :contacts do
+        member do
+          post 'update_status'
+        end
+      end
     end
   end
 end
