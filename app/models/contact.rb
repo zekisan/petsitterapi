@@ -29,7 +29,7 @@ class Contact < ActiveRecord::Base
 
   def self.update_status
     Contact.all.each do |c|
-      c.update(status: 50) if c.date_start.to_datetime < DateTime.now
+      c.update(status: 50) if c.date_start.to_datetime < DateTime.now && c.status_cd == 10
     end
   end
 
