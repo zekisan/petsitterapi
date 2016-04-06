@@ -25,8 +25,8 @@ class PetOwnersController < ApplicationController
   end
 
   def contacts
-    contact = Contact.find(params[:id])
-    render json: contact.contacts.as_json(include: [:sitter, :pet_owner, :animals])
+    pet_owner = PetOwner.find(params[:id])
+    render json: pet_owner.contacts.as_json(include: [:sitter, :pet_owner, :animals])
   end
 
   private
