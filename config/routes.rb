@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
       resources :pet_owners do
         member do
+          get 'contacts'
           post 'search_sitters'
           post 'request_contact'
         end
