@@ -36,6 +36,6 @@ class PetOwnersController < ApplicationController
   end
 
   def pet_owners_params
-    params.permit!
+    params.permit!["_json"]
   end
 end
