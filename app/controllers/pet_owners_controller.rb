@@ -9,6 +9,7 @@ class PetOwnersController < ApplicationController
 
   def request_contact
     @pet_owner.contacts.build(sitter_id: pet_owners_params[:sitter_id],
+                              app_id: pet_owners_params[:app_id],
                               date_start: pet_owners_params[:date_start],
                               date_final: pet_owners_params[:date_final],
                               time_start: pet_owners_params[:time_start],
