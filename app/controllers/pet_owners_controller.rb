@@ -4,7 +4,7 @@ class PetOwnersController < ApplicationController
 
   def search_sitters
     sitters = @pet_owner.search_near_sitters(params[:animals])
-    render json: sitters.as_json(include: [:animals])
+    render json: sitters.as_json(include: [:animals, :user])
   end
 
   def request_contact

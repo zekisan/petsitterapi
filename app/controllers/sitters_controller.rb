@@ -2,7 +2,7 @@ class SittersController < ApplicationController
   
   def index
     sitters = Sitter.all
-    render json: sitters.as_json(include: [:animals, {cares: { only: :name }}])
+    render json: sitters.as_json(include: [:animals, :user, {cares: { only: :name }}])
   end
 
   def contacts
