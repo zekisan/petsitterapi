@@ -43,7 +43,7 @@ class PetOwnersController < ApplicationController
 
   def contacts
     pet_owner = PetOwner.find(params[:id])
-    render json: pet_owner.contacts.as_json(include: [:sitter, :pet_owner, :animals, :rates])
+    render json: pet_owner.contacts.as_json(include: [:sitter, :pet_owner, :animals, :rate])
   end
 
   def rate_contact
