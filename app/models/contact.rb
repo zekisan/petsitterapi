@@ -11,8 +11,9 @@
 #  time_final   :string
 #  created_at   :datetime
 #  updated_at   :datetime
-#  total_value  :decimal(5, 2)
-#  status_cd    :integer          default("10")
+#  total_value  :decimal(7, 2)
+#  status_cd    :integer          default(10)
+#  app_id       :integer
 #
 
 class Contact < ActiveRecord::Base
@@ -22,6 +23,8 @@ class Contact < ActiveRecord::Base
 
   has_many :animal_contacts
   has_many :animals, through: :animal_contacts
+
+  has_one :rate
 
   accepts_nested_attributes_for :animal_contacts
 

@@ -14,6 +14,7 @@
 #  value_shift       :decimal(5, 2)
 #  value_day         :decimal(5, 2)
 #  about_me          :text
+#  user_id           :integer
 #
 
 require 'rails_helper'

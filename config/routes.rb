@@ -12,12 +12,19 @@ Rails.application.routes.draw do
           get 'contacts'
           post 'search_sitters'
           post 'request_contact'
+          post 'rate_contact'
         end
       end
 
       resources :contacts do
         member do
           post 'update_status'
+        end
+      end
+
+      resources :rates do
+        member do
+          post 'reply_rate'
         end
       end
     end

@@ -10,6 +10,8 @@
 #  latitude   :decimal(18, 16)
 #  longitude  :decimal(18, 16)
 #  district   :string
+#  photo      :string
+#  user_id    :integer
 #
 
 require 'rails_helper'

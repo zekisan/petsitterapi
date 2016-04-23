@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: pet_owners
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  address    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  latitude   :decimal(18, 16)
+#  longitude  :decimal(18, 16)
+#  district   :string
+#  photo      :string
+#  user_id    :integer
+#
+
 class PetOwnersController < ApplicationController
 
   before_filter :get_petowner
@@ -27,7 +43,18 @@ class PetOwnersController < ApplicationController
 
   def contacts
     pet_owner = PetOwner.find(params[:id])
-    render json: pet_owner.contacts.as_json(include: [:sitter, :pet_owner, :animals])
+    render json: pet_owner.contacts.as_json(include: [:sitter, :pet_owner, :animals, :rates])
+  end
+
+  def rate_contact
+    pet_owner = PetOwner.find(params[:id])
+    contact = pet_owner.contacts.where(id: params[:contact_id]).first
+    Rate.create(
+        contact: contact,
+        positive: params[:positive],
+        sitter_comment_attributes: {text: params[:text]}
+    )
+    render json: 'ok'
   end
 
   private
