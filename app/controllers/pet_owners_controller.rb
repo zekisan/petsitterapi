@@ -44,7 +44,7 @@ class PetOwnersController < ApplicationController
   def contacts
     pet_owner = PetOwner.find(params[:id])
     render json: pet_owner.contacts.as_json(include: [:sitter, :pet_owner, :animals,
-                                                      rate: [:sitter_comment, :pet_owner_comment]])
+                                                      rate: { include: [:sitter_comment, :pet_owner_comment]}])
   end
 
   def rate_contact
@@ -53,7 +53,7 @@ class PetOwnersController < ApplicationController
     Rate.create(
         contact: contact,
         positive: params[:positive],
-        sitter_comment_attributes: {text: params[:text]}
+        pet_owner_comment_attributes: {text: params[:text]}
     )
     render json: 'ok'
   end
