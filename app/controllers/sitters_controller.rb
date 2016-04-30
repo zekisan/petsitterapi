@@ -2,19 +2,15 @@
 #
 # Table name: sitters
 #
-#  id                :integer          not null, primary key
-#  name              :string
-#  address           :string
-#  latitude          :decimal(18, 16)
-#  longitude         :decimal(18, 16)
-#  photo             :string
-#  header_background :string
-#  district          :string
-#  value_hour        :decimal(5, 2)
-#  value_shift       :decimal(5, 2)
-#  value_day         :decimal(5, 2)
-#  about_me          :text
-#  user_id           :integer
+#  id         :integer          not null, primary key
+#  name       :string
+#  address    :string
+#  district   :string
+#  about_me   :text
+#  value_hour :decimal(5, 2)
+#  latitude   :decimal(18, 16)
+#  longitude  :decimal(18, 16)
+#  photo_id   :integer
 #
 
 class SittersController < ApplicationController

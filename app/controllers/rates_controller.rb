@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: rates
+#
+#  id         :integer          not null, primary key
+#  positive   :boolean
+#  contact_id :integer
+#
+
 class RatesController < ApplicationController
 
   def reply_rate

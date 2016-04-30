@@ -2,16 +2,13 @@
 #
 # Table name: pet_owners
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  address    :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  latitude   :decimal(18, 16)
-#  longitude  :decimal(18, 16)
-#  district   :string
-#  photo      :string
-#  user_id    :integer
+#  id        :integer          not null, primary key
+#  name      :string
+#  address   :string
+#  district  :string
+#  latitude  :decimal(18, 16)
+#  longitude :decimal(18, 16)
+#  photo_id  :integer
 #
 
 require 'rails_helper'
