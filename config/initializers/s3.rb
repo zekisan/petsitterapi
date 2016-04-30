@@ -5,5 +5,5 @@ CarrierWave.configure do |config|
       :aws_secret_access_key => 'HbCXIeDm+4dnKbz71CVysoD+AsVGvBulKnlqPIZM',
       :region => 'sa-east-1'
   }
-  config.fog_directory = "petsitter"
+  config.fog_directory = "testezekisan"
 end
