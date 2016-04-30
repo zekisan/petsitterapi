@@ -8,4 +8,14 @@ class UsersController < ApplicationController
     render json: 'ok'
   end
 
+  def login
+    user = User.find_by_email(params[:email])
+
+    if user.nil?
+      render json: { error: "user_invalid" }, status: :not_found
+    else
+      render json: user.user_json
+    end
+  end
+
 end

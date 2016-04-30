@@ -34,6 +34,8 @@ Rails.application.routes.draw do
           post 'insert_photo'
         end
       end
+
+      post 'login', to: 'users#login'
     end
   end
 end

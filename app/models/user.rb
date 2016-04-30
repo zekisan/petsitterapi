@@ -15,4 +15,10 @@ class User < ActiveRecord::Base
 
   belongs_to :photo
 
+  def user_json
+    {id: self.id, name: self.name, entity_type: self.entity_type, entity_id: self.entity_id,
+     photo: { thumb: self.photo.image.thumb.url, medium: self.photo.image.medium.url,
+     large: self.photo.image.large.url}}
+  end
+
 end
