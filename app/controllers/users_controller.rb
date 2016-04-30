@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def login
     user = User.find_by_email(params[:email])
 
-    if user.nil?
+    if user.nil? || user.password != params[:password]
       render json: { error: "user_invalid" }, status: :not_found
     else
       render json: user.user_json
