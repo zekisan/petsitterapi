@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       resources :users do
         member do
           post 'insert_photo'
+          post 'update_device_token'
         end
       end
 

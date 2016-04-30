@@ -18,4 +18,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_device_token
+    user = User.find(params[:id])
+    user.update(device_token: params[:token])
+    render json: 'ok'
+  end
+
 end
