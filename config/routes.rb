@@ -27,6 +27,12 @@ Rails.application.routes.draw do
           post 'reply_rate'
         end
       end
+
+      resources :users do
+        member do
+          post 'insert_photo'
+        end
+      end
     end
   end
 end
