@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.photo = photo
     user.save
+    render json: 'ok'
   end
 
 end
