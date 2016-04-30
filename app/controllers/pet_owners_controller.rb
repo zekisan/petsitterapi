@@ -55,6 +55,14 @@ class PetOwnersController < ApplicationController
     render json: 'ok'
   end
 
+  def insert_photo
+    photo = Photo.create(image: params[:image])
+    owner = Owner.find(params[:id])
+    owner.photo = photo
+    owner.save
+    render json: 'ok'
+  end
+
   private
 
   def get_petowner

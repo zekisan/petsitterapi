@@ -13,6 +13,7 @@ Rails.application.routes.draw do
           post 'search_sitters'
           post 'request_contact'
           post 'rate_contact'
+          post 'insert_photo'
         end
       end
 
