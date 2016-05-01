@@ -17,7 +17,7 @@ class PetOwnersController < ApplicationController
 
   def search_sitters
     sitters = @pet_owner.search_near_sitters(params[:animals])
-    render json: sitters.as_json(include: [:animals, :user])
+    render json: json_for_search_results(sitters)
   end
 
   def request_contact
@@ -41,7 +41,7 @@ class PetOwnersController < ApplicationController
   def contacts
     pet_owner = PetOwner.find(params[:id])
     render json: pet_owner.contacts.as_json(include: [:sitter, :pet_owner, :animals,
-                                                      rate: { include: [:sitter_comment, :pet_owner_comment]}])
+                                                      rate: {include: [:sitter_comment, :pet_owner_comment]}])
   end
 
   def rate_contact
@@ -76,5 +76,15 @@ class PetOwnersController < ApplicationController
 
   def pet_owners_params
     params.permit!
+  end
+
+  def json_for_search_results(sitters)
+    sitters.map do |s|
+      {id: s.id, name: s.name, address: s.address, district: s.district, about_me: s.about_me,
+       value_hour: s.value_hour.to_d, latitude: s.latitude.to_d, longitude: s.longitude.to_d,
+       animals: s.animals.map { |a| {id: a.id, name: a.name} },
+       photo: {thumb: s.photo.image.thumb.url, medium: s.photo.image.medium.url,
+               large: s.photo.image.large.url}}
+    end
   end
 end
