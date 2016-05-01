@@ -26,4 +26,9 @@ class SittersController < ApplicationController
                                                    rate: { include: [:sitter_comment, :pet_owner_comment]}])
   end
 
+  def show
+    sitter = Sitter.find params[:id]
+    return sitter.sitter_json
+  end
+
 end

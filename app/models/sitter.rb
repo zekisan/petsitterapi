@@ -24,4 +24,9 @@ class Sitter < ActiveRecord::Base
   has_many :contacts
 
   belongs_to :photo
+
+  def sitter_json
+    { id: self.id, name: self.name, address: self.address, district: self.district, about_me: self.about_me,
+    value_hour: self.value_hour, latitude: self.latitude, longitude: self.longitude }
+  end
 end

@@ -17,4 +17,9 @@ class PetOwner < ActiveRecord::Base
   has_many :contacts
 
   belongs_to :photo
+
+  def owner_json
+    { id: self.id, name: self.name, address: self.address, district: self.district,
+      latitude: self.latitude, longitude: self.longitude }
+  end
 end
