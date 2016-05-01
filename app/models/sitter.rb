@@ -27,6 +27,6 @@ class Sitter < ActiveRecord::Base
 
   def sitter_json
     { id: self.id, name: self.name, address: self.address, district: self.district, about_me: self.about_me,
-    value_hour: self.value_hour, latitude: self.latitude, longitude: self.longitude }
+    value_hour: self.value_hour.to_d, latitude: self.latitude.to_d, longitude: self.longitude.to_d }
   end
 end

@@ -20,6 +20,6 @@ class PetOwner < ActiveRecord::Base
 
   def owner_json
     { id: self.id, name: self.name, address: self.address, district: self.district,
-      latitude: self.latitude, longitude: self.longitude }
+      latitude: self.latitude.to_d, longitude: self.longitude.to_d }
   end
 end
