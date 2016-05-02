@@ -82,7 +82,7 @@ class PetOwnersController < ApplicationController
     sitters.map do |s|
       {id: s.id, name: s.name, address: s.address, district: s.district, about_me: s.about_me,
        value_hour: s.value_hour.to_d, latitude: s.latitude.to_d, longitude: s.longitude.to_d,
-       animals: s.animals.map { |a| {id: a.id, name: a.name} },
+       phone: s.phone, animals: s.animals.map { |a| {id: a.id, name: a.name} },
        photo: {thumb: s.photo.image.thumb.url, medium: s.photo.image.medium.url,
                large: s.photo.image.large.url}}
     end
