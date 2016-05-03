@@ -26,9 +26,10 @@ class Sitter < ActiveRecord::Base
   belongs_to :photo
 
   def sitter_json
-    { id: self.id, name: self.name, address: self.address, district: self.district, about_me: self.about_me,
-    value_hour: self.value_hour.to_d, latitude: self.latitude.to_d, longitude: self.longitude.to_d,
-      phone: self.phone, photo: { thumb: self.photo.image.thumb.url, medium: self.photo.image.medium.url,
-             large: self.photo.image.large.url} }
+    {id: s.id, name: s.name, address: s.address, district: s.district, about_me: s.about_me,
+     value_hour: s.value_hour.to_d, latitude: s.latitude.to_d, longitude: s.longitude.to_d,
+     phone: s.phone, animals: s.animals.map { |a| {id: a.id, name: a.name} },
+     photo: {thumb: s.photo.image.thumb.url, medium: s.photo.image.medium.url,
+             large: s.photo.image.large.url}}
   end
 end
