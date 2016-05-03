@@ -79,6 +79,6 @@ class PetOwnersController < ApplicationController
   end
 
   def json_for_search_results(sitters)
-    sitters.map { |s| s.sitter_json }
+    sitters.map(&:sitter_json)
   end
 end
