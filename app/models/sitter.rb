@@ -28,6 +28,7 @@ class Sitter < ActiveRecord::Base
   def sitter_json
     { id: self.id, name: self.name, address: self.address, district: self.district, about_me: self.about_me,
     value_hour: self.value_hour.to_d, latitude: self.latitude.to_d, longitude: self.longitude.to_d,
-      phone: self.phone }
+      phone: self.phone, photo: { thumb: self.photo.image.thumb.url, medium: self.photo.image.medium.url,
+             large: self.photo.image.large.url} }
   end
 end

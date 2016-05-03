@@ -20,6 +20,8 @@ class PetOwner < ActiveRecord::Base
 
   def owner_json
     { id: self.id, name: self.name, address: self.address, district: self.district,
-      latitude: self.latitude.to_d, longitude: self.longitude.to_d }
+      latitude: self.latitude.to_d, longitude: self.longitude.to_d,
+      photo: { thumb: self.photo.image.thumb.url, medium: self.photo.image.medium.url,
+               large: self.photo.image.large.url } }
   end
 end
