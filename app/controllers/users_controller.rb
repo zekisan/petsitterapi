@@ -18,6 +18,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    user = User.find(params[:id])
+
+    if user.nil? || user.password != params[:password]
+      render json: { error: "user_invalid" }, status: :not_found
+    else
+      user.update(device_token: nil)
+      render json: 'ok'
+    end
+  end
+
   def update_device_token
     user = User.find(params[:id])
     user.update(device_token: params[:token])
