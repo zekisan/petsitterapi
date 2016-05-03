@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def logout
     user = User.find(params[:id])
 
-    if user.nil? || user.password != params[:password]
+    if user.nil?
       render json: { error: "user_invalid" }, status: :not_found
     else
       user.update(device_token: nil)
