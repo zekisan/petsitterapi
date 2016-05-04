@@ -16,6 +16,8 @@
 #  app_id       :integer
 #
 
+require 'gcm'
+
 class Contact < ActiveRecord::Base
 
   belongs_to :pet_owner
@@ -28,6 +30,8 @@ class Contact < ActiveRecord::Base
 
   accepts_nested_attributes_for :animal_contacts
 
+  after_create :send_notification_to_sitter
+
   as_enum :status, new: 10, rejected: 20, accepted: 30, finished: 40, late: 50
 
   def self.update_status
@@ -37,4 +41,15 @@ class Contact < ActiveRecord::Base
     end
   end
 
+  def send_notification_to_sitter
+    user = get_owner_user
+    gcm = GCM.new(ENV['GCM_API_KEY'])
+    notification = { title: 'Título da Notification', body: 'Body da Notification', icon: 'ic_launcher' }
+    options = {data: {message: 'Solicitação de Trabalho'}, collapse_key: "updated_score", notification: notification}
+    gcm.send(user.device_token, options)
+  end
+
+  def get_owner_user
+    User.where(entity_type: 'Sitter', entity_id: self.owner.id).first
+  end
 end
