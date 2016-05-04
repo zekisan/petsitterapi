@@ -50,6 +50,6 @@ class Contact < ActiveRecord::Base
   end
 
   def get_owner_user
-    User.where(entity_type: 'Sitter', entity_id: self.owner.id).first
+    User.where(entity_type: 'Sitter', entity_id: self.pet_owner.id).first
   end
 end
