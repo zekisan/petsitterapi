@@ -44,8 +44,9 @@ class Contact < ActiveRecord::Base
   def send_notification_to_sitter
     user = get_owner_user
     gcm = GCM.new(ENV['GCM_API_KEY'])
-    options = {data: {message: 'Solicitação de Trabalho', title: 'Título da Notification', body: 'Body da Notification', icon: 'ic_launcher'}, collapse_key: "updated_score"}
-    response = gcm.send(user.device_token, options)
+    options = {data: {message: 'Solicitação de Trabalho', title: 'Título da Notification',
+                      body: 'Body da Notification', icon: 'ic_launcher'}, collapse_key: "updated_score"}
+    response = gcm.send([user.device_token], options)
     Rails.logger.debug response.inspect
   end
 
