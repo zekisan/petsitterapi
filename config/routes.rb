@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :sitters do
         member do
           get 'contacts'
+          post 'insert_profile_photo'
         end
       end
 
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
           post 'request_contact'
           post 'rate_contact'
           post 'insert_photo'
+          post 'insert_profile_photo'
         end
       end
 
