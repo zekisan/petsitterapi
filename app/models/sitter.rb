@@ -23,6 +23,8 @@ class Sitter < ActiveRecord::Base
 
   has_many :contacts
 
+  has_many :profile_photos, class_name: 'SitterProfilePhoto'
+
   belongs_to :photo
 
   def sitter_json
@@ -30,6 +32,8 @@ class Sitter < ActiveRecord::Base
      value_hour: self.value_hour.to_d, latitude: self.latitude.to_d, longitude: self.longitude.to_d,
      phone: self.phone, animals: self.animals.map { |a| {id: a.id, name: a.name} },
      photo: {thumb: self.photo.image.thumb.url, medium: self.photo.image.medium.url,
-             large: self.photo.image.large.url}}
+             large: self.photo.image.large.url},
+     profile_photos: self.profile_photos.map { |p| { thumb: p.image.thumb.url,
+     medium: p.image.medium.url, large: p.image.large.url}}}
   end
 end

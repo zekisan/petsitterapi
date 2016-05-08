@@ -30,6 +30,13 @@ class SittersController < ApplicationController
     render json: sitter.sitter_json
   end
 
+  def insert_profile_photo
+    sitter = Sitter.find(params[:id])
+    sitter.profile_photos.build(image: params[:image])
+    sitter.save
+    render json: 'ok'
+  end
+
   private
 
   def json_for_contacts(contacts)

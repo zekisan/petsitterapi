@@ -15,6 +15,7 @@ class PetOwner < ActiveRecord::Base
   include Concerns::DistanceCalculation
 
   has_many :contacts
+  has_many :profile_photos, class_name: 'PetOwnerProfilePhoto'
 
   belongs_to :photo
 
@@ -22,6 +23,8 @@ class PetOwner < ActiveRecord::Base
     { id: self.id, name: self.name, address: self.address, district: self.district,
       latitude: self.latitude.to_d, longitude: self.longitude.to_d,
       photo: { thumb: self.photo.image.thumb.url, medium: self.photo.image.medium.url,
-               large: self.photo.image.large.url } }
+               large: self.photo.image.large.url },
+      profile_photos: self.profile_photos.map { |p| { thumb: p.image.thumb.url,
+                                                      medium: p.image.medium.url, large: p.image.large.url}}}
   end
 end

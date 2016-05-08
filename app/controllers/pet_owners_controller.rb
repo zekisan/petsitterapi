@@ -38,6 +38,13 @@ class PetOwnersController < ApplicationController
     end
   end
 
+  def insert_profile_photo
+    pet_owner = PetOwner.find(params[:id])
+    pet_owner.profile_photos.build(image: params[:image])
+    pet_owner.save
+    render json: 'ok'
+  end
+
   def contacts
     pet_owner = PetOwner.find(params[:id])
     render json: json_for_contacts(pet_owner.contacts)
