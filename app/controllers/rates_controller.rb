@@ -3,8 +3,8 @@
 # Table name: rates
 #
 #  id         :integer          not null, primary key
-#  positive   :boolean
 #  contact_id :integer
+#  stars_qtd  :integer
 #
 
 class RatesController < ApplicationController
