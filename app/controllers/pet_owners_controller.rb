@@ -55,7 +55,7 @@ class PetOwnersController < ApplicationController
     contact = pet_owner.contacts.where(app_id: params[:app_id]).first
     Rate.create(
         contact: contact,
-        positive: params[:positive],
+        stars: params[:stars_qtd],
         pet_owner_comment_attributes: {text: params[:text]}
     )
     render json: 'ok'
