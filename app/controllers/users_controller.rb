@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id           :integer          not null, primary key
+#  email        :string
+#  password     :string
+#  entity_type  :string
+#  entity_id    :integer
+#  device_token :string
+#  photo_id     :integer
+#
+
 class UsersController < ApplicationController
 
   def insert_photo

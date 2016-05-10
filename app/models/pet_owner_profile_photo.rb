@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: pet_owner_profile_photos
+#
+#  id           :integer          not null, primary key
+#  image        :string
+#  pet_owner_id :integer
+#
+
 class PetOwnerProfilePhoto < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader

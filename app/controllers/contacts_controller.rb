@@ -13,7 +13,7 @@
 #  updated_at   :datetime
 #  total_value  :decimal(7, 2)
 #  status_cd    :integer          default(10)
-#  app_id       :integer
+#  app_id       :string
 #
 
 class ContactsController < ApplicationController
@@ -31,7 +31,7 @@ class ContactsController < ApplicationController
   private
 
   def get_contact
-    @contact = Contact.find params[:id]
+    @contact = Contact.find_by_app_id params[:app_id]
   end
 
 end

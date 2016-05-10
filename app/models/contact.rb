@@ -13,7 +13,7 @@
 #  updated_at   :datetime
 #  total_value  :decimal(7, 2)
 #  status_cd    :integer          default(10)
-#  app_id       :integer
+#  app_id       :string
 #
 
 require 'gcm'

@@ -52,7 +52,7 @@ class PetOwnersController < ApplicationController
 
   def rate_contact
     pet_owner = PetOwner.find(params[:id])
-    contact = pet_owner.contacts.where(id: params[:contact_id]).first
+    contact = pet_owner.contacts.where(app_id: params[:app_id]).first
     Rate.create(
         contact: contact,
         positive: params[:positive],
@@ -90,7 +90,7 @@ class PetOwnersController < ApplicationController
 
   def json_for_contacts(contacts)
     contacts.map do |c|
-      { id: c.id, app_id: c.app_id, date_start: c.date_start, date_final: c.date_final,
+      { app_id: c.app_id, date_start: c.date_start, date_final: c.date_final,
       time_start: c.time_start, time_final: c.time_final, created_at: c.created_at,
       status_cd: c.status_cd, total_value: c.total_value, owner: c.pet_owner.owner_json,
       sitter: c.sitter.sitter_json, animals: c.animals.map { |a| {id: a.id, name: a.name} } }
