@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       end
 
       resources :rates do
-        member do
+        collection do
           post 'reply_rate'
         end
       end

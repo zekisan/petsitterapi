@@ -56,7 +56,8 @@ class PetOwnersController < ApplicationController
     Rate.create(
         contact: contact,
         stars: params[:stars_qtd],
-        pet_owner_comment_attributes: {text: params[:text]}
+        app_id: params[:rate_app_id],
+        pet_owner_comment: params[:owner_comment]
     )
     render json: 'ok'
   end
@@ -93,7 +94,9 @@ class PetOwnersController < ApplicationController
       { app_id: c.app_id, date_start: c.date_start, date_final: c.date_final,
       time_start: c.time_start, time_final: c.time_final, created_at: c.created_at,
       status_cd: c.status_cd, total_value: c.total_value, owner: c.pet_owner.owner_json,
-      sitter: c.sitter.sitter_json, animals: c.animals.map { |a| {id: a.id, name: a.name} } }
+      sitter: c.sitter.sitter_json, animals: c.animals.map { |a| {id: a.id, name: a.name} },
+        rate: c.rate.present? ? {stars_qtd: c.rate.stars_qtd, owner_comment: c.rate.pet_owner_comment,
+                                 sitter_comment: c.rate.sitter_comment} : nil }
     end
   end
 end
