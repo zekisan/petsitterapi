@@ -55,7 +55,7 @@ class PetOwnersController < ApplicationController
     contact = pet_owner.contacts.where(app_id: params[:app_id]).first
     Rate.create(
         contact: contact,
-        stars: params[:stars_qtd],
+        stars_qtd: params[:stars_qtd],
         app_id: params[:rate_app_id],
         pet_owner_comment: params[:owner_comment]
     )
