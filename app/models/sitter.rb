@@ -41,8 +41,12 @@ class Sitter < ActiveRecord::Base
   end
 
   def update_rate_avg
-    rates = self.contacts.map(:rate).compact
-    self.rate_avg = rates.map(&:stars_qtd).sum / rates.size
+    rates = self.contacts.map(&:rate).compact
+    self.rate_avg = if rates.size > 0
+                      rates.map(&:stars_qtd).sum / rates.size
+                    else
+                      0
+                    end
     self.save!
   end
 
