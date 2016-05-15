@@ -41,14 +41,7 @@ class SittersController < ApplicationController
   private
 
   def json_for_contacts(contacts)
-    contacts.map do |c|
-      {app_id: c.app_id, date_start: c.date_start, date_final: c.date_final,
-       time_start: c.time_start, time_final: c.time_final, created_at: c.created_at,
-       status_cd: c.status_cd, total_value: c.total_value, owner: c.pet_owner.owner_json,
-       sitter: c.sitter.sitter_json, animals: c.animals.map { |a| {id: a.id, name: a.name} },
-       rate: c.rate.present? ? {stars_qtd: c.rate.stars_qtd, owner_comment: c.rate.pet_owner_comment,
-                                sitter_comment: c.rate.sitter_comment} : nil}
-    end
+    contacts.map { |c| c.contact_json }
   end
 
 end
