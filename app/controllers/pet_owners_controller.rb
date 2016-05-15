@@ -59,6 +59,7 @@ class PetOwnersController < ApplicationController
         app_id: params[:rate_app_id],
         pet_owner_comment: params[:owner_comment]
     )
+    contact.sitter.update_rate_avg
     render json: 'ok'
   end
 

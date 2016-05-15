@@ -28,13 +28,27 @@ class Sitter < ActiveRecord::Base
 
   belongs_to :photo
 
+  before_create :set_rate_avg
+
   def sitter_json
     {id: self.id, name: self.name, address: self.address, district: self.district, about_me: self.about_me,
      value_hour: self.value_hour.to_d, latitude: self.latitude.to_d, longitude: self.longitude.to_d,
-     phone: self.phone, animals: self.animals.map { |a| {id: a.id, name: a.name} },
+     phone: self.phone, rate_avg: self.rate_avg, nimals: self.animals.map { |a| {id: a.id, name: a.name} },
      photo: {thumb: self.photo.image.thumb.url, medium: self.photo.image.medium.url,
              large: self.photo.image.large.url},
      profile_photos: self.profile_photos.map { |p| { thumb: p.image.thumb.url,
      medium: p.image.medium.url, large: p.image.large.url}}}
+  end
+
+  def update_rate_avg
+    rates = self.contacts.map(:rate).compact
+    self.rate_avg = rates.map(&:stars_qtd).sum / rates.size
+    self.save!
+  end
+
+  private
+
+  def set_rate_avg
+    self.rate_avg = 0
   end
 end
