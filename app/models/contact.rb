@@ -53,4 +53,13 @@ class Contact < ActiveRecord::Base
   def get_owner_user
     User.where(entity_type: 'Sitter', entity_id: self.sitter.id).first
   end
+
+  def contact_json
+    { app_id: self.app_id, date_start: self.date_start, date_final: self.date_final,
+      time_start: self.time_start, time_final: self.time_final, created_at: self.created_at,
+      status_cd: self.status_cd, total_value: self.total_value, owner: self.pet_owner.owner_json,
+      sitter: self.sitter.sitter_json, animals: self.animals.map { |a| {id: a.id, name: a.name} },
+      rate: self.rate.present? ? {stars_qtd: self.rate.stars_qtd, owner_comment: self.rate.pet_owner_comment,
+                               sitter_comment: self.rate.sitter_comment} : nil }
+  end
 end
