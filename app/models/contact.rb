@@ -45,7 +45,7 @@ class Contact < ActiveRecord::Base
     user = get_owner_user
     gcm = GCM.new(ENV['GCM_API_KEY'])
     options = {data: {message: 'Solicitação de Trabalho', title: 'Título da Notification',
-                      body: 'Body da Notification', icon: 'ic_launcher'}, collapse_key: "updated_score"}
+                      body: self.contact_json, icon: 'ic_launcher'}, collapse_key: "updated_score"}
     response = gcm.send([user.device_token], options)
     Rails.logger.debug response.inspect
   end
