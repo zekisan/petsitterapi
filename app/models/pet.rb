@@ -10,6 +10,7 @@
 #  breed        :string
 #  pet_owner_id :integer
 #  animal_id    :integer
+#  app_id       :string
 #
 
 class Pet < ActiveRecord::Base
@@ -25,6 +26,7 @@ class Pet < ActiveRecord::Base
   accepts_nested_attributes_for :pet_cares
 
   def pet_json
-    { name: self.name, age: self.age, size: self.size_text, weight: self.weight, breed: self.breed }
+    { app_id: self.app_id, name: self.name, age: self.age, size: self.size_text, weight: self.weight, breed: self.breed,
+    pet_cares: self.pet_cares.map(&:pet_care_json)}
   end
 end

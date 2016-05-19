@@ -11,4 +11,8 @@ class PetCare < ActiveRecord::Base
 
   belongs_to :pet
 
+  def pet_care_json
+    { care: self.care}
+  end
+
 end

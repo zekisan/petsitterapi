@@ -38,9 +38,9 @@ Sitter.create([{name: 'Letícia', address: 'Rua General Lima e Silva, 500 - Cent
 
 PetOwner.create(name: 'Ezequiel Guilherme', district: 'Centro Histórico', address: 'R. Cel. Genuino, 149 - Centro Histórico, Porto Alegre - Rio Grande do Sul', latitude: -30.035148, longitude: -51.2267789)
 
-Pet.create([{name: 'Rex', animal: animals[0], pet_owner: PetOwner.first, age: 2, size: 'grande', weight: 25.300, breed: 'SRD',
+Pet.create([{app_id: 'sosudoasiudoauneqw', name: 'Rex', animal: animals[0], pet_owner: PetOwner.first, age: 2, size: 'grande', weight: 25.300, breed: 'SRD',
              pet_cares_attributes: [{care: 'Longos passeios'}, {care: 'Ração Especial'}]},
-            {name: 'Felix', animal: animals[1], pet_owner: PetOwner.first, age: 7, size: 'pequeno', weight: 4.5, breed: 'Siamês',},
+            {app_id: 'ooi-asdkja-weqwbnb',name: 'Felix', animal: animals[1], pet_owner: PetOwner.first, age: 7, size: 'pequeno', weight: 4.5, breed: 'Siamês',},
             pet_cares_attributes: [{care: ''}, {care: 'Ração Especial'}]])
 
 User.create({email: "leticia@gmail.com", password: "123", entity_type: 'Sitter', entity_id: Sitter.find_by_name('Letícia').id, device_token: nil})
