@@ -16,6 +16,7 @@ class PetOwner < ActiveRecord::Base
 
   has_many :contacts
   has_many :profile_photos, class_name: 'PetOwnerProfilePhoto'
+  has_many :pets
 
   belongs_to :photo
 

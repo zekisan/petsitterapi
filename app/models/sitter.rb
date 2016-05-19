@@ -12,6 +12,7 @@
 #  longitude  :decimal(18, 16)
 #  photo_id   :integer
 #  phone      :string
+#  rate_avg   :integer
 #
 
 class Sitter < ActiveRecord::Base
