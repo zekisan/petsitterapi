@@ -24,4 +24,7 @@ class Pet < ActiveRecord::Base
 
   accepts_nested_attributes_for :pet_cares
 
+  def pet_json
+    { name: self.name, age: self.age, size: self.size_text, weight: self.weight, breed: self.breed }
+  end
 end

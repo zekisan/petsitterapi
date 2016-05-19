@@ -25,6 +25,7 @@ class PetOwner < ActiveRecord::Base
       latitude: self.latitude.to_d, longitude: self.longitude.to_d,
       photo: { thumb: self.photo.image.thumb.url, medium: self.photo.image.medium.url,
                large: self.photo.image.large.url },
+      pets: self.pets.map(&:pet_json),
       profile_photos: self.profile_photos.map { |p| { thumb: p.image.thumb.url,
                                                       medium: p.image.medium.url, large: p.image.large.url}}}
   end
