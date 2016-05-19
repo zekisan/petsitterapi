@@ -1,0 +1,7 @@
+pt:
+  enumerize:
+    pet:
+      size:
+        pequeno: 'Pequeno'
+        medio: 'Médio'
+        grande: 'Grande'
