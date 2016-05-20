@@ -41,7 +41,7 @@ PetOwner.create(name: 'Ezequiel Guilherme', district: 'Centro Histórico', addre
 Pet.create([{app_id: 'sosudoasiudoauneqw', name: 'Rex', animal: animals[0], pet_owner: PetOwner.first, age: 2, size: 'grande', weight: 25.300, breed: 'SRD',
              pet_cares_attributes: [{care: 'Longos passeios'}, {care: 'Ração Especial'}]},
             {app_id: 'ooi-asdkja-weqwbnb',name: 'Felix', animal: animals[1], pet_owner: PetOwner.first, age: 7, size: 'pequeno', weight: 4.5, breed: 'Siamês',},
-            pet_cares_attributes: [{care: ''}, {care: 'Ração Especial'}]])
+            pet_cares_attributes: [{care: 'Problemas cardíacos'}, {care: 'Ração Especial'}]])
 
 User.create({email: "leticia@gmail.com", password: "123", entity_type: 'Sitter', entity_id: Sitter.find_by_name('Letícia').id, device_token: nil})
 User.create({email: "marciolopes@gmail.com", password: "123", entity_type: 'Sitter', entity_id: Sitter.find_by_name('Márcio Lopes').id, device_token: nil})
