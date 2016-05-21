@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   scope '/api' do
     scope '/v1' do
-      get 'sitter_contacts', to: 'sitters#contacts'
-      get 'pet_owner_contacts', to: 'pet_owners#contacts'
+      post 'sitter_contacts', to: 'sitters#contacts'
+      post 'pet_owner_contacts', to: 'pet_owners#contacts'
 
       resources :sitters do
         collection do
