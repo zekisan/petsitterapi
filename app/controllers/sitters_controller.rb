@@ -29,7 +29,7 @@ class SittersController < ApplicationController
   end
 
   def get_sitter
-    sitter = Sitter.find params[:id]
+    sitter = Sitter.find_by_app_id params[:id]
     render json: sitter.sitter_json
   end
 

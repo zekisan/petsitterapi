@@ -73,7 +73,7 @@ class PetOwnersController < ApplicationController
   end
 
   def get_owner
-    owner = PetOwner.find params[:id]
+    owner = PetOwner.find_by_app_id params[:id]
     render json: owner.owner_json
   end
 
