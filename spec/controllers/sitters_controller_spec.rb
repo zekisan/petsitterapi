@@ -14,6 +14,7 @@
 #  phone      :string
 #  rate_avg   :integer
 #  app_id     :string
+#  surname    :string
 #
 
 require 'rails_helper'

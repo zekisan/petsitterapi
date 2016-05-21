@@ -6,7 +6,7 @@
 #  email        :string
 #  password     :string
 #  entity_type  :string
-#  entity_id    :integer
+#  entity_id    :string
 #  device_token :string
 #  photo_id     :integer
 #  app_id       :string

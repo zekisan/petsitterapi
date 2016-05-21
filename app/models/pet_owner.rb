@@ -10,6 +10,7 @@
 #  longitude :decimal(18, 16)
 #  photo_id  :integer
 #  app_id    :string
+#  surname   :string
 #
 
 class PetOwner < ActiveRecord::Base
@@ -22,7 +23,7 @@ class PetOwner < ActiveRecord::Base
   belongs_to :photo
 
   def owner_json
-    { app_id: self.app_id, name: self.name, address: self.address, district: self.district,
+    { app_id: self.app_id, name: self.name, surname: self.surname, address: self.address, district: self.district,
       latitude: self.latitude.to_d, longitude: self.longitude.to_d,
       photo: { app_id: self.photo.app_id, thumb: self.photo.image.thumb.url, medium: self.photo.image.medium.url,
                large: self.photo.image.large.url },

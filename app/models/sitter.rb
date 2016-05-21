@@ -14,6 +14,7 @@
 #  phone      :string
 #  rate_avg   :integer
 #  app_id     :string
+#  surname    :string
 #
 
 class Sitter < ActiveRecord::Base
@@ -33,7 +34,8 @@ class Sitter < ActiveRecord::Base
   before_create :set_rate_avg
 
   def sitter_json
-    {app_id: self.app_id, name: self.name, address: self.address, district: self.district, about_me: self.about_me,
+    {app_id: self.app_id, name: self.name, surname: self.surname, address: self.address, district: self.district,
+     about_me: self.about_me,
      value_hour: self.value_hour.to_d, latitude: self.latitude.to_d, longitude: self.longitude.to_d,
      phone: self.phone, rate_avg: self.rate_avg, animals: self.animals.map { |a| {id: a.id, name: a.name} },
      photo: {app_id: self.photo.app_id, thumb: self.photo.image.thumb.url, medium: self.photo.image.medium.url,

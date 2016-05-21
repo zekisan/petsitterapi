@@ -10,6 +10,7 @@
 #  longitude :decimal(18, 16)
 #  photo_id  :integer
 #  app_id    :string
+#  surname   :string
 #
 
 class PetOwnersController < ApplicationController
