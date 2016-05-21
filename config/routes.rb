@@ -6,12 +6,14 @@ Rails.application.routes.draw do
 
       resources :sitters do
         collection do
+          post 'get_sitter'
           post 'insert_profile_photo'
         end
       end
 
       resources :pet_owners do
         collection do
+          post 'get_owner'
           post 'search_sitters'
           post 'request_contact'
           post 'rate_contact'
