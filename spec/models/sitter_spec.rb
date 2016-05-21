@@ -13,6 +13,7 @@
 #  photo_id   :integer
 #  phone      :string
 #  rate_avg   :integer
+#  app_id     :string
 #
 
 require 'rails_helper'

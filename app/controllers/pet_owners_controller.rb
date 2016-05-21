@@ -9,6 +9,7 @@
 #  latitude  :decimal(18, 16)
 #  longitude :decimal(18, 16)
 #  photo_id  :integer
+#  app_id    :string
 #
 
 class PetOwnersController < ApplicationController
@@ -21,8 +22,8 @@ class PetOwnersController < ApplicationController
   end
 
   def request_contact
-    @pet_owner.contacts.build(sitter_id: pet_owners_params[:sitter_id],
-                              app_id: pet_owners_params[:app_id],
+    @pet_owner.contacts.build(sitter_id: Sitter.find_by_app_id(pet_owners_params[:sitter_id]),
+                              app_id: pet_owners_params[:contact_app_id],
                               date_start: pet_owners_params[:date_start],
                               date_final: pet_owners_params[:date_final],
                               time_start: pet_owners_params[:time_start],
@@ -39,20 +40,20 @@ class PetOwnersController < ApplicationController
   end
 
   def insert_profile_photo
-    pet_owner = PetOwner.find(params[:id])
+    pet_owner = PetOwner.find_by_app_id(params[:app_id])
     pet_owner.profile_photos.build(image: params[:image])
     pet_owner.save
     render json: 'ok'
   end
 
   def contacts
-    pet_owner = PetOwner.find(params[:id])
+    pet_owner = PetOwner.find_by_app_id(params[:app_id])
     render json: json_for_contacts(pet_owner.contacts)
   end
 
   def rate_contact
-    pet_owner = PetOwner.find(params[:id])
-    contact = pet_owner.contacts.where(app_id: params[:app_id]).first
+    pet_owner = PetOwner.find_by_app_id(params[:owner_app_id])
+    contact = pet_owner.contacts.where(app_id: params[:contact_app_id]).first
     Rate.create(
         contact: contact,
         stars_qtd: params[:stars_qtd],
@@ -65,7 +66,7 @@ class PetOwnersController < ApplicationController
 
   def insert_photo
     photo = Photo.create(image: params[:image])
-    owner = PetOwner.find(params[:id])
+    owner = PetOwner.find_by_app_id(params[:app_id])
     owner.photo = photo
     owner.save
     render json: 'ok'
@@ -79,7 +80,7 @@ class PetOwnersController < ApplicationController
   private
 
   def get_petowner
-    @pet_owner = PetOwner.find params[:id]
+    @pet_owner = PetOwner.find_by_app_id(params[:app_id])
   end
 
   def pet_owners_params

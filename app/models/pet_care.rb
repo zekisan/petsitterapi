@@ -5,6 +5,7 @@
 #  id     :integer          not null, primary key
 #  care   :string
 #  pet_id :integer
+#  app_id :string
 #
 
 class PetCare < ActiveRecord::Base

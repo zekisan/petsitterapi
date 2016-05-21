@@ -9,13 +9,14 @@
 #  entity_id    :integer
 #  device_token :string
 #  photo_id     :integer
+#  app_id       :string
 #
 
 class UsersController < ApplicationController
 
   def insert_photo
     photo = Photo.create(image: params[:image])
-    user = User.find(params[:id])
+    user = User.find_by_app_id(params[:app_id])
     user.photo = photo
     user.save
     render json: 'ok'
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def logout
-    user = User.find(params[:id])
+    user = User.find_by_app_id(params[:app_id])
 
     if user.nil?
       render json: { error: "user_invalid" }, status: :not_found
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
   end
 
   def update_device_token
-    user = User.find(params[:id])
+    user = User.find_by_app_id(params[:app_id])
     user.update(device_token: params[:token])
     render json: 'ok'
   end

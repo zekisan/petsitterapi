@@ -5,6 +5,7 @@
 #  id           :integer          not null, primary key
 #  image        :string
 #  pet_owner_id :integer
+#  app_id       :string
 #
 
 class PetOwnerProfilePhoto < ActiveRecord::Base

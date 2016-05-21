@@ -13,6 +13,7 @@
 #  photo_id   :integer
 #  phone      :string
 #  rate_avg   :integer
+#  app_id     :string
 #
 
 class SittersController < ApplicationController
@@ -23,7 +24,7 @@ class SittersController < ApplicationController
   end
 
   def contacts
-    sitter = Sitter.find(params[:id])
+    sitter = Sitter.find_by_app_id(params[:app_id])
     render json: json_for_contacts(sitter.contacts)
   end
 
@@ -33,7 +34,7 @@ class SittersController < ApplicationController
   end
 
   def insert_profile_photo
-    sitter = Sitter.find(params[:id])
+    sitter = Sitter.find_by_app_id(params[:app_id])
     sitter.profile_photos.build(image: params[:image])
     sitter.save
     render json: 'ok'

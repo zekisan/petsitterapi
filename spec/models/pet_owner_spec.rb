@@ -9,6 +9,7 @@
 #  latitude  :decimal(18, 16)
 #  longitude :decimal(18, 16)
 #  photo_id  :integer
+#  app_id    :string
 #
 
 require 'rails_helper'
