@@ -2,19 +2,24 @@
 #
 # Table name: sitters
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  address    :string
-#  district   :string
-#  about_me   :text
-#  value_hour :decimal(5, 2)
-#  latitude   :decimal(18, 16)
-#  longitude  :decimal(18, 16)
-#  photo_id   :integer
-#  phone      :string
-#  rate_avg   :integer
-#  app_id     :string
-#  surname    :string
+#  id             :integer          not null, primary key
+#  name           :string
+#  district       :string
+#  about_me       :text
+#  value_hour     :decimal(5, 2)
+#  latitude       :decimal(18, 16)
+#  longitude      :decimal(18, 16)
+#  photo_id       :integer
+#  phone          :string
+#  rate_avg       :integer
+#  app_id         :string
+#  surname        :string
+#  street         :string
+#  address_number :string
+#  complement     :string
+#  cep            :string
+#  city           :string
+#  state          :string
 #
 
 class Sitter < ActiveRecord::Base
@@ -34,14 +39,15 @@ class Sitter < ActiveRecord::Base
   before_create :set_rate_avg
 
   def sitter_json
-    {app_id: self.app_id, name: self.name, surname: self.surname, address: self.address, district: self.district,
-     about_me: self.about_me,
+    {app_id: self.app_id, name: self.name, surname: self.surname, district: self.district,
+     about_me: self.about_me, street: self.street, address_number: self.address_number, cep: self.cep,
+     complement: self.complement, city: self.city, state: self.state,
      value_hour: self.value_hour.to_d, latitude: self.latitude.to_d, longitude: self.longitude.to_d,
      phone: self.phone, rate_avg: self.rate_avg, animals: self.animals.map { |a| {id: a.id, name: a.name} },
      photo: {app_id: self.photo.app_id, thumb: self.photo.image.thumb.url, medium: self.photo.image.medium.url,
              large: self.photo.image.large.url},
-     profile_photos: self.profile_photos.map { |p| { app_id: p.app_id, thumb: p.image.thumb.url,
-     medium: p.image.medium.url, large: p.image.large.url}}}
+     profile_photos: self.profile_photos.map { |p| {app_id: p.app_id, thumb: p.image.thumb.url,
+                                                    medium: p.image.medium.url, large: p.image.large.url} }}
   end
 
   def update_rate_avg

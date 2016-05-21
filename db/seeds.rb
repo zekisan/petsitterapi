@@ -15,28 +15,38 @@ cares = Care.create([{name: 'Passeio'}, {name: 'Corte de Unhas'}, {name: 'Aplica
 
 about_me_text = 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.'
 
-Sitter.create([{name: 'Letícia', address: 'Rua General Lima e Silva, 500 - Centro Histórico, Porto Alegre - RS',
+Sitter.create([{name: 'Letícia', street: 'Rua General Lima e Silva', address_number: '500',
+                city: 'Porto Alegre', state: 'RS', cep: '90050-102', complement: nil,
                 district: 'Centro Histórico', value_hour: 30.0,
                 about_me: about_me_text, phone: '9856-7412',
                 latitude: -30.0376441, longitude: -51.2222909,
                 animals: [animals[1]], cares: [cares[0], cares[1]]},
-               {name: 'Márcio Lopes', address: 'R. Cel. Genuino, 149 - Centro Histórico, Porto Alegre - Rio Grande do Sul',
+               {name: 'Márcio Lopes',
+                street: 'R. Cel. Genuino', address_number: '149',
+                city: 'Porto Alegre', state: 'RS', cep: '90010-350', complement: nil,
                 district: 'Centro Histórico', value_hour: 15.0,
                 about_me: about_me_text, phone: '9856-6644',
                 latitude: -30.035148, longitude: -51.2267789,
                 animals: [animals[0], animals[3]], cares: [cares[0], cares[1]]},
-               {name: 'Matheus', address: 'Rua João Alfredo, 400 - Cidade Baixa, Porto Alegre - RS',
+               {name: 'Matheus',
+                street: 'Rua João Alfredo', address_number: '400',
+                city: 'Porto Alegre', state: 'RS', cep: '90050-230', complement: nil,
                 district: 'Cidade Baixa', value_hour: 45.0,
                 about_me: about_me_text, phone: '9856-2222',
                 latitude: -30.0406009, longitude: -51.2255778,
                 animals: [animals[0]], cares: [cares[0], cares[1]]},
-               {name: 'Lúcia', address: 'Rua da República, 199 - Cidade Baixa, Porto Alegre - RS',
+               {name: 'Lúcia',
+                street: 'Rua da República', address_number: '199',
+                city: 'Porto Alegre', state: 'RS', cep: '90050-321', complement: nil,
                 district: 'Cidade Baixa', value_hour: 25.0,
                 about_me: about_me_text, phone: '9856-6666',
                 latitude: -30.0375021, longitude: -51.22195079999999,
                 animals: [animals[1]], cares: [cares[0], cares[1]]}])
 
-PetOwner.create(name: 'Ezequiel Guilherme', district: 'Centro Histórico', address: 'R. Cel. Genuino, 149 - Centro Histórico, Porto Alegre - Rio Grande do Sul', latitude: -30.035148, longitude: -51.2267789)
+PetOwner.create(name: 'Ezequiel Guilherme', district: 'Centro Histórico',
+                street: 'R. Cel. Genuino', address_number: '149', complement: nil,
+                city: 'Porto Alegre', state: 'RS', cep: '90010-350',
+                latitude: -30.035148, longitude: -51.2267789)
 
 Pet.create([{app_id: 'sosudoasiudoauneqw', name: 'Rex', animal: animals[0], pet_owner: PetOwner.first, age: 2, size: 'grande', weight: 25.300, breed: 'SRD',
              pet_cares_attributes: [{care: 'Longos passeios'}, {care: 'Ração Especial'}]},
