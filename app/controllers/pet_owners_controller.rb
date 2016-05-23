@@ -83,6 +83,31 @@ class PetOwnersController < ApplicationController
     render json: owner.owner_json
   end
 
+  def create_pet_owner
+    photo = Photo.create(app_id: params[:photo_app_id], image: params[:image])
+    PetOwner.create(
+        app_id: params[:owner_app_id],
+        name: params[:name],
+        surname: params[:surname],
+        phone: params[:phone],
+        street: params[:street],
+        address_number: params[:address_number],
+        complement: params[:complement],
+        cep: params[:cep],
+        district: params[:district],
+        city: params[:city],
+        state: params[:state],
+        latitude: params[:latitude],
+        longitude: params[:longitude],
+        photo: photo,
+    )
+    User.create(
+        app_id: params[:user_app_id], email: params[:email], password: params[:password],
+        entity_type: params[:entity_type], entity_id: params[:entity_id]
+    )
+    render json: 'ok'
+  end
+
   private
 
   def get_petowner

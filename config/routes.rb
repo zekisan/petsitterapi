@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         collection do
           post 'get_sitter'
           post 'insert_profile_photo'
+          post 'create_sitter'
         end
       end
 
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
           post 'rate_contact'
           post 'insert_photo'
           post 'insert_profile_photo'
+          post 'create_pet_owner'
         end
       end
 
