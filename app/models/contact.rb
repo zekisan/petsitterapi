@@ -25,6 +25,7 @@ class Contact < ActiveRecord::Base
 
   has_many :animal_contacts
   has_many :animals, through: :animal_contacts
+  has_many :summaries
 
   has_one :rate
 
@@ -61,6 +62,7 @@ class Contact < ActiveRecord::Base
      sitter: self.sitter.sitter_json, animals: self.animals.map { |a| {id: a.id, name: a.name} },
      rate: self.rate.present? ? {app_id: self.rate.app_id, stars_qtd: self.rate.stars_qtd,
                                  owner_comment: self.rate.pet_owner_comment,
-                                 sitter_comment: self.rate.sitter_comment} : nil}
+                                 sitter_comment: self.rate.sitter_comment} : nil,
+     summaries: self.summaries.map(&:summary_json)}
   end
 end
