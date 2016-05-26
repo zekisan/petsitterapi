@@ -28,6 +28,18 @@ class ContactsController < ApplicationController
     end
   end
 
+  def save_summary
+    photo = Photo.create(app_id: params[:photo_app_id], image: params[:image])
+    @contact.summaries.build(
+                          app_id: params[:summary_app_id],
+                          text: params[:text],
+                          created_at: params[:created_at],
+                          photo: photo
+    )
+    @contact.save
+    render json: @contact.contact_json
+  end
+
   private
 
   def get_contact
