@@ -44,6 +44,12 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :summaries do
+        collection do
+          post 'insert_photo'
+        end
+      end
+
       post 'login', to: 'users#login'
     end
   end
