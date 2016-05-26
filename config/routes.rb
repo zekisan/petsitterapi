@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       resources :contacts do
         collection do
           post 'update_status'
+          post 'save_summary'
         end
       end
 
