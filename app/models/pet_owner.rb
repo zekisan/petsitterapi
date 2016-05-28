@@ -32,7 +32,7 @@ class PetOwner < ActiveRecord::Base
     { app_id: self.app_id, name: self.name, surname: self.surname, district: self.district,
       street: self.street, address_number: self.address_number, cep: self.cep,
       complement: self.complement, city: self.city, state: self.state,
-      latitude: self.latitude.to_d, longitude: self.longitude.to_d,
+      latitude: self.latitude.to_d, longitude: self.longitude.to_d, phone: self.phone,
       photo: { app_id: self.photo.app_id, thumb: self.photo.image.thumb.url, medium: self.photo.image.medium.url,
                large: self.photo.image.large.url },
       pets: self.pets.map(&:pet_json),
