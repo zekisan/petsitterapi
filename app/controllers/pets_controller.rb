@@ -11,6 +11,7 @@ class PetsController < ApplicationController
         size: params[:size],
         weight: params[:weight],
         breed: params[:breed],
+        pet_care: params[:pet_care],
         pet_owner: pet_owner,
         animal: animal
     )

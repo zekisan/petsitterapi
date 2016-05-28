@@ -12,6 +12,7 @@
 #  animal_id    :integer
 #  app_id       :string
 #  age_text     :string
+#  pet_care     :string
 #
 
 class Pet < ActiveRecord::Base
