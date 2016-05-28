@@ -16,6 +16,7 @@
 #  cep            :string
 #  city           :string
 #  state          :string
+#  phone          :string
 #
 
 class PetOwner < ActiveRecord::Base
