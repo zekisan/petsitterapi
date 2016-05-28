@@ -8,19 +8,10 @@
 #  entity_type  :string
 #  entity_id    :string
 #  device_token :string
-#  photo_id     :integer
 #  app_id       :string
 #
 
 class UsersController < ApplicationController
-
-  def insert_photo
-    photo = Photo.create(image: params[:image])
-    user = User.find_by_app_id(params[:app_id])
-    user.photo = photo
-    user.save
-    render json: 'ok'
-  end
 
   def login
     user = User.find_by_email(params[:email])
