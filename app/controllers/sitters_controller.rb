@@ -47,7 +47,6 @@ class SittersController < ApplicationController
   end
 
   def create_sitter
-    photo = Photo.create(app_id: params[:photo_app_id], image: params[:image])
     Sitter.create(
         app_id: params[:sitter_app_id],
         name: params[:name],
@@ -62,15 +61,21 @@ class SittersController < ApplicationController
         state: params[:state],
         latitude: params[:latitude],
         longitude: params[:longitude],
-        photo: photo,
         about_me: params[:about_me],
         value_hour: params[:value_hour],
+        animal_sitters_attributes: params[:animals],
         rate_avg: 0
     )
     User.create(
         app_id: params[:user_app_id], email: params[:email], password: params[:password],
-        entity_type: params[:entity_type], entity_id: params[:entity_id]
+        entity_type: params[:entity_type], entity_id: params[:entity_id], device_token: params[:device_token]
     )
+    render json: 'ok'
+  end
+
+  def insert_photo
+    photo = Photo.create(app_id: params[:photo_app_id], image: params[:image])
+    Sitter.find_by_app_id(params[:app_id]).update(photo: photo)
     render json: 'ok'
   end
 

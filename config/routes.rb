@@ -9,6 +9,7 @@ Rails.application.routes.draw do
           post 'get_sitter'
           post 'insert_profile_photo'
           post 'create_sitter'
+          post 'insert_photo'
         end
       end
 

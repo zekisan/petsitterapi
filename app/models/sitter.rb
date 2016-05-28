@@ -36,6 +36,8 @@ class Sitter < ActiveRecord::Base
 
   belongs_to :photo
 
+  accepts_nested_attributes_for :animal_sitters
+
   before_create :set_rate_avg
 
   def sitter_json
