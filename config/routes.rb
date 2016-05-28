@@ -54,6 +54,7 @@ Rails.application.routes.draw do
       resources :pets do
         collection do
           post 'create_pet'
+          post 'insert_photo'
         end
       end
 

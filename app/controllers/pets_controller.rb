@@ -18,4 +18,9 @@ class PetsController < ApplicationController
     render json: 'ok'
   end
 
+  def insert_photo
+    photo = Photo.create(app_id: params[:photo_app_id], image: params[:image])
+    Pet.find_by_app_id(params[:app_id]).update(photo: photo)
+    render json: 'ok'
+  end
 end

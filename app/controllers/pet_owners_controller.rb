@@ -71,10 +71,8 @@ class PetOwnersController < ApplicationController
   end
 
   def insert_photo
-    photo = Photo.create(image: params[:image])
-    owner = PetOwner.find_by_app_id(params[:app_id])
-    owner.photo = photo
-    owner.save
+    photo = Photo.create(app_id: params[:photo_app_id], image: params[:image])
+    PetOwner.find_by_app_id(params[:app_id]).update(photo: photo)
     render json: 'ok'
   end
 
@@ -84,7 +82,6 @@ class PetOwnersController < ApplicationController
   end
 
   def create_pet_owner
-    #photo = Photo.create(app_id: params[:photo_app_id], image: params[:image])
     PetOwner.create(
         app_id: params[:owner_app_id],
         name: params[:name],
