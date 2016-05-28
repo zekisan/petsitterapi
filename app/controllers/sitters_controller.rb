@@ -48,22 +48,22 @@ class SittersController < ApplicationController
 
   def create_sitter
     Sitter.create(
-        app_id: params[:sitter_app_id],
-        name: params[:name],
-        surname: params[:surname],
-        phone: params[:phone],
-        street: params[:street],
-        address_number: params[:address_number],
-        complement: params[:complement],
-        cep: params[:cep],
-        district: params[:district],
-        city: params[:city],
-        state: params[:state],
-        latitude: params[:latitude],
-        longitude: params[:longitude],
-        about_me: params[:about_me],
-        value_hour: params[:value_hour],
-        animal_sitters_attributes: params[:animals],
+        app_id: sitters_params[:sitter_app_id],
+        name: sitters_params[:name],
+        surname: sitters_params[:surname],
+        phone: sitters_params[:phone],
+        street: sitters_params[:street],
+        address_number: sitters_params[:address_number],
+        complement: sitters_params[:complement],
+        cep: sitters_params[:cep],
+        district: sitters_params[:district],
+        city: sitters_params[:city],
+        state: sitters_params[:state],
+        latitude: sitters_params[:latitude],
+        longitude: sitters_params[:longitude],
+        about_me: sitters_params[:about_me],
+        value_hour: sitters_params[:value_hour],
+        animal_sitters_attributes: sitters_params[:animals],
         rate_avg: 0
     )
     User.create(
@@ -83,6 +83,10 @@ class SittersController < ApplicationController
 
   def json_for_contacts(contacts)
     contacts.map { |c| c.contact_json }
+  end
+
+  def sitters_params
+    params.permit!
   end
 
 end

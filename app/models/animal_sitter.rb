@@ -11,7 +11,7 @@
 
 class AnimalSitter < ActiveRecord::Base
 
-  belongs_to :sitter
   belongs_to :animal
+  belongs_to :sitter
 
 end
