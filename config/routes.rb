@@ -51,6 +51,12 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :pets do
+        collection do
+          post 'create_pet'
+        end
+      end
+
       post 'login', to: 'users#login'
     end
   end

@@ -16,4 +16,8 @@ class Animal < ActiveRecord::Base
   has_many :animal_contacts
   has_many :contacts, through: :animal_contacts
 
+  def animal_json
+    { id: self.id, name: self.name }
+  end
+
 end
