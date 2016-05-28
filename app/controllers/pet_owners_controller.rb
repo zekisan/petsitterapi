@@ -84,7 +84,7 @@ class PetOwnersController < ApplicationController
   end
 
   def create_pet_owner
-    photo = Photo.create(app_id: params[:photo_app_id], image: params[:image])
+    #photo = Photo.create(app_id: params[:photo_app_id], image: params[:image])
     PetOwner.create(
         app_id: params[:owner_app_id],
         name: params[:name],
@@ -99,11 +99,10 @@ class PetOwnersController < ApplicationController
         state: params[:state],
         latitude: params[:latitude],
         longitude: params[:longitude],
-        photo: photo,
     )
     User.create(
         app_id: params[:user_app_id], email: params[:email], password: params[:password],
-        entity_type: params[:entity_type], entity_id: params[:entity_id]
+        entity_type: params[:entity_type], entity_id: params[:entity_id], device_token: params[:device_token]
     )
     render json: 'ok'
   end
