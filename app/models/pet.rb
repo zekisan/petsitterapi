@@ -20,7 +20,7 @@ class Pet < ActiveRecord::Base
   belongs_to :animal
 
   def pet_json
-    { app_id: self.app_id, name: self.name, age: self.age, size: self.size_text, weight: self.weight, breed: self.breed,
+    { app_id: self.app_id, name: self.name, age: self.age, size: self.size, weight: self.weight, breed: self.breed,
     pet_care: self.pet_care}
   end
 end
