@@ -46,10 +46,8 @@ class Sitter < ActiveRecord::Base
      complement: self.complement, city: self.city, state: self.state,
      value_hour: self.value_hour.to_d, latitude: self.latitude.to_d, longitude: self.longitude.to_d,
      phone: self.phone, rate_avg: self.rate_avg, animals: self.animals.map { |a| {id: a.id, name: a.name} },
-     photo: {app_id: self.photo.app_id, thumb: self.photo.image.thumb.url, medium: self.photo.image.medium.url,
-             large: self.photo.image.large.url},
-     profile_photos: self.profile_photos.map { |p| {app_id: p.app_id, thumb: p.image.thumb.url,
-                                                    medium: p.image.medium.url, large: p.image.large.url} }}
+     photo: {app_id: self.photo.app_id, image: self.photo.image.url },
+     profile_photos: self.profile_photos.map { |p| {app_id: p.app_id, image: p.image.url } }}
   end
 
   def update_rate_avg

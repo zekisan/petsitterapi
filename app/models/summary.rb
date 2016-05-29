@@ -17,8 +17,7 @@ class Summary < ActiveRecord::Base
 
   def summary_json
     { app_id: self.app_id, text: self.text, created_at: self.created_at,
-      photo: { app_id: self.photo.app_id, thumb: self.photo.image.thumb.url, medium: self.photo.image.medium.url,
-                                                                                  large: self.photo.image.large.url } }
+      photo: { app_id: self.photo.app_id, image: self.photo.image.url } }
   end
 
 end
