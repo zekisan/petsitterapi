@@ -23,13 +23,13 @@ class Contact < ActiveRecord::Base
   belongs_to :pet_owner
   belongs_to :sitter
 
-  has_many :animal_contacts
-  has_many :animals, through: :animal_contacts
+  has_many :contact_pets
+  has_many :pets, through: :contact_pets
   has_many :summaries
 
   has_one :rate
 
-  accepts_nested_attributes_for :animal_contacts
+  accepts_nested_attributes_for :contact_pets
 
   after_create :send_notification_to_sitter
 
