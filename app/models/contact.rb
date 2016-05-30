@@ -52,7 +52,7 @@ class Contact < ActiveRecord::Base
   end
 
   def get_owner_user
-    User.where(entity_type: 'Sitter', entity_id: self.sitter.id).first
+    User.where(entity_type: 'Sitter', entity_id: self.sitter.app_id).first
   end
 
   def contact_json
