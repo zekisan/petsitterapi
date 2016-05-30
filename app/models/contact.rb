@@ -59,7 +59,7 @@ class Contact < ActiveRecord::Base
     {app_id: self.app_id, date_start: self.date_start, date_final: self.date_final,
      time_start: self.time_start, time_final: self.time_final, created_at: self.created_at,
      status_cd: self.status_cd, total_value: self.total_value, owner: self.pet_owner.owner_json,
-     sitter: self.sitter.sitter_json, animals: self.animals.map { |a| {id: a.id, name: a.name} },
+     sitter: self.sitter.sitter_json, pets: self.pets.map(&:pet_json),
      rate: self.rate.present? ? {app_id: self.rate.app_id, stars_qtd: self.rate.stars_qtd,
                                  owner_comment: self.rate.pet_owner_comment,
                                  sitter_comment: self.rate.sitter_comment} : nil,
