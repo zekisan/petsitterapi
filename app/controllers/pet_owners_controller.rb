@@ -28,7 +28,7 @@ class PetOwnersController < ApplicationController
   end
 
   def request_contact
-    pets = Pet.where(app_id: params[:pet_contacts].map(&:pet_app_id))
+    pets = Pet.where(app_id: params[:pet_contacts].map { |p| p["pet_app_id"] })
     @pet_owner.contacts.build(sitter_id: Sitter.find_by_app_id(pet_owners_params[:sitter_id]),
                               app_id: pet_owners_params[:contact_app_id],
                               date_start: pet_owners_params[:date_start],
