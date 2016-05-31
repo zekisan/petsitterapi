@@ -5,7 +5,7 @@ module Concerns
     def search_near_sitters(animals)
       sitters_for_animals = get_sitters_by_animals(animals)
       sitters_for_animals.all.map do |s|
-        s if distance_between_points(self.latitude, self.longitude, s.latitude, s.longitude) <= 5
+        s if distance_between_points(self.latitude, self.longitude, s.latitude, s.longitude) <= 20
       end.compact
     end
 
