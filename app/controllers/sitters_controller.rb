@@ -47,7 +47,7 @@ class SittersController < ApplicationController
   end
 
   def create_sitter
-    sitter = Sitter.create(
+    Sitter.create(
         app_id: sitters_params[:sitter_app_id],
         name: sitters_params[:name],
         surname: sitters_params[:surname],
@@ -70,13 +70,14 @@ class SittersController < ApplicationController
         app_id: params[:user_app_id], email: params[:email], password: params[:password],
         entity_type: params[:entity_type], entity_id: params[:entity_id], device_token: params[:device_token]
     )
-    Contact.create_contacts_for_sitter(sitter)
     render json: 'ok'
   end
 
   def insert_photo
     photo = Photo.create(app_id: params[:photo_app_id], image: params[:image])
-    Sitter.find_by_app_id(params[:app_id]).update(photo: photo)
+    sitter = Sitter.find_by_app_id(params[:app_id])
+    sitter.update(photo: photo)
+    Contact.create_contacts_for_sitter(sitter)
     render json: 'ok'
   end
 
