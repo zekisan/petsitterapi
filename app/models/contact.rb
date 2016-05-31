@@ -65,4 +65,37 @@ class Contact < ActiveRecord::Base
                                  sitter_comment: self.rate.sitter_comment} : nil,
      summaries: self.summaries.map(&:summary_json)}
   end
+
+  def self.create_contacts_for_sitter(sitter)
+    Contact.create(sitter_id: sitter.id,
+                    pet_owner_id: PetOwner.find_by_app_id("808d293a-f93e-42a7-af07-1584eb0f22e8").id,
+                   app_id: SecureRandom.hex(13),
+                   date_start: '2016-07-01',
+                   date_final: '2016-07-04',
+                   time_start: '14h00',
+                   time_final: '16h00',
+                   status_cd: 10,
+                   total_value: 200,
+                   pets: PetOwner.find_by_app_id("808d293a-f93e-42a7-af07-1584eb0f22e8").pets)
+    Contact.create(sitter_id: sitter.id,
+                   pet_owner_id: PetOwner.find_by_app_id("256bd470-816d-4688-830b-732d0b1881e7").id,
+                   app_id: SecureRandom.hex(13),
+                   date_start: '2016-05-31',
+                   date_final: '2016-05-10',
+                   time_start: '14h00',
+                   time_final: '16h00',
+                   status_cd: 550,
+                   total_value: 200,
+                   pets: PetOwner.find_by_app_id("256bd470-816d-4688-830b-732d0b1881e7").pets)
+    Contact.create(sitter_id: sitter.id,
+                   pet_owner_id: PetOwner.find_by_app_id("ad8c40c7-3343-451a-8833-aa2fec8ce26b").id,
+                   app_id: SecureRandom.hex(13),
+                   date_start: '2016-05-01',
+                   date_final: '2016-05-04',
+                   time_start: '14h00',
+                   time_final: '16h00',
+                   status_cd: 40,
+                   total_value: 200,
+                   pets: PetOwner.find_by_app_id("ad8c40c7-3343-451a-8833-aa2fec8ce26b").pets)
+  end
 end
