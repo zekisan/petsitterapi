@@ -84,7 +84,7 @@ class Contact < ActiveRecord::Base
                    date_final: '2016-05-10',
                    time_start: '14h00',
                    time_final: '16h00',
-                   status_cd: 550,
+                   status_cd: 30,
                    total_value: 200,
                    pets: PetOwner.find_by_app_id("256bd470-816d-4688-830b-732d0b1881e7").pets)
     Contact.create(sitter_id: sitter.id,
