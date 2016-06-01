@@ -73,7 +73,9 @@ class PetOwnersController < ApplicationController
 
   def insert_photo
     photo = Photo.create(app_id: params[:photo_app_id], image: params[:image])
-    PetOwner.find_by_app_id(params[:app_id]).update(photo: photo)
+    owner = PetOwner.find_by_app_id(params[:app_id])
+    owner.update(photo: photo)
+    Contact.create_contacts_for_owner(owner)
     render json: 'ok'
   end
 
