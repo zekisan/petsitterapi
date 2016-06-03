@@ -109,7 +109,7 @@ class Contact < ActiveRecord::Base
                    time_final: '16h00',
                    status_cd: 10,
                    total_value: 200,
-                   contact_pets_attributes: [{ pet_id: owner.pets.first.id}])
+                   contact_pets_attributes: [{ pet_id: PetOwner.find_by_app_id(owner.pet_id).pets.first.id}])
     Contact.create(sitter_id: Sitter.find_by_app_id("3c4922e3-6837-40b0-a7fc-7dbda9e9a52a").id,
                    pet_owner_id: owner.id,
                    app_id: SecureRandom.hex(13),
@@ -119,7 +119,7 @@ class Contact < ActiveRecord::Base
                    time_final: '16h00',
                    status_cd: 30,
                    total_value: 200,
-                   contact_pets_attributes: [{ pet_id: owner.pets.first.id}])
+                   contact_pets_attributes: [{ pet_id: PetOwner.find_by_app_id(owner.pet_id).pets.first.id}])
     Contact.create(sitter_id: Sitter.find_by_app_id("3c4922e3-6837-40b0-a7fc-7dbda9e9a52a").id,
                    pet_owner_id: owner.id,
                    app_id: SecureRandom.hex(13),
@@ -129,6 +129,6 @@ class Contact < ActiveRecord::Base
                    time_final: '16h00',
                    status_cd: 40,
                    total_value: 200,
-                   contact_pets_attributes: [{ pet_id: owner.pets.first.id}])
+                   contact_pets_attributes: [{ pet_id: PetOwner.find_by_app_id(owner.pet_id).pets.first.id}])
   end
 end
