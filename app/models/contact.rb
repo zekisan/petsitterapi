@@ -87,7 +87,7 @@ class Contact < ActiveRecord::Base
                    status_cd: 30,
                    total_value: 200,
                    contact_pets_attributes: [{pet_id: PetOwner.find_by_app_id("808d293a-f93e-42a7-af07-1584eb0f22e8").pets.first.id}])
-    Contact.create(sitter_id: sitter.id,
+    finished_contact = Contact.create(sitter_id: sitter.id,
                    pet_owner_id: PetOwner.find_by_app_id("ad8c40c7-3343-451a-8833-aa2fec8ce26b").id,
                    app_id: SecureRandom.hex(13),
                    date_start: '2016-05-01',
@@ -97,6 +97,8 @@ class Contact < ActiveRecord::Base
                    status_cd: 40,
                    total_value: 200,
                    contact_pets_attributes: [{pet_id: PetOwner.find_by_app_id("808d293a-f93e-42a7-af07-1584eb0f22e8").pets.first.id}])
+    finished_contact.rate.build(stars_qtd: 5, pet_owner_comment: "Adorei, meus filhotes já estão com saudades...")
+    finished_contact.save
   end
 
   def self.create_contacts_for_owner(owner)
@@ -120,7 +122,7 @@ class Contact < ActiveRecord::Base
                    status_cd: 30,
                    total_value: 200,
                    contact_pets_attributes: [{ pet_id: PetOwner.find_by_app_id(owner.app_id).pets.first.id}])
-    Contact.create(sitter_id: Sitter.find_by_app_id("3c4922e3-6837-40b0-a7fc-7dbda9e9a52a").id,
+    finished_contact = Contact.create(sitter_id: Sitter.find_by_app_id("3c4922e3-6837-40b0-a7fc-7dbda9e9a52a").id,
                    pet_owner_id: owner.id,
                    app_id: SecureRandom.hex(13),
                    date_start: '2016-05-01',
@@ -130,5 +132,8 @@ class Contact < ActiveRecord::Base
                    status_cd: 40,
                    total_value: 200,
                    contact_pets_attributes: [{ pet_id: PetOwner.find_by_app_id(owner.app_id).pets.first.id}])
+    finished_contact.rate.build(stars_qtd: 5, pet_owner_comment: "Adorei, meus filhotes já estão com saudades...",
+                                sitter_comment: "Adorei eles tb! Se comportaram muito bem!!!")
+    finished_contact.save
   end
 end
