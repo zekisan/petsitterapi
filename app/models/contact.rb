@@ -97,8 +97,8 @@ class Contact < ActiveRecord::Base
                    status_cd: 40,
                    total_value: 200,
                    contact_pets_attributes: [{pet_id: PetOwner.find_by_app_id("808d293a-f93e-42a7-af07-1584eb0f22e8").pets.first.id}])
-    finished_contact.rate.build(stars_qtd: 5, pet_owner_comment: "Adorei, meus filhotes já estão com saudades...")
-    finished_contact.save
+    Rate.create(contact_id: finished_contact.id, stars_qtd: 5, app_id: SecureRandom.hex(13),
+                pet_owner_comment: "Adorei, meus filhotes já estão com saudades...")
   end
 
   def self.create_contacts_for_owner(owner)
@@ -132,8 +132,8 @@ class Contact < ActiveRecord::Base
                    status_cd: 40,
                    total_value: 200,
                    contact_pets_attributes: [{ pet_id: PetOwner.find_by_app_id(owner.app_id).pets.first.id}])
-    finished_contact.rate.build(stars_qtd: 5, pet_owner_comment: "Adorei, meus filhotes já estão com saudades...",
+    Rate.create(contact_id: finished_contact.id,stars_qtd: 5, app_id: SecureRandom.hex(13),
+                                pet_owner_comment: "Adorei, meus filhotes já estão com saudades...",
                                 sitter_comment: "Adorei eles tb! Se comportaram muito bem!!!")
-    finished_contact.save
   end
 end
