@@ -22,6 +22,7 @@ class ContactsController < ApplicationController
 
   def update_status
     if @contact.update(status_cd: params[:status])
+      @contact.notify_status_update
       render json: 'ok'
     else
       render json: @contact.errors.messages

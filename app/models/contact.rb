@@ -31,7 +31,7 @@ class Contact < ActiveRecord::Base
 
   accepts_nested_attributes_for :contact_pets
 
-  after_create :send_notification_to_sitter
+  after_create :notify_new_contact
 
   as_enum :status, new: 10, rejected: 20, accepted: 30, finished: 40, late: 50
 
@@ -42,8 +42,8 @@ class Contact < ActiveRecord::Base
     end
   end
 
-  def send_notification_to_sitter
-    user = get_owner_user
+  def notify_new_contact
+    user = get_sitter_user
     gcm = GCM.new(ENV['GCM_API_KEY'])
     options = {data: {message: 'Solicitação de Trabalho', title: 'Título da Notification',
                       type: 'job', body: self.contact_json, icon: 'ic_launcher'}, collapse_key: "updated_score"}
@@ -51,7 +51,30 @@ class Contact < ActiveRecord::Base
     Rails.logger.debug response.inspect
   end
 
+  def notify_status_update
+    type = get_status_type
+    user = get_owner_user
+    gcm = GCM.new(ENV['GCM_API_KEY'])
+    options = {data: {message: 'Solicitação de Trabalho', title: 'Título da Notification',
+                      type: type, body: self.contact_json, icon: 'ic_launcher'}, collapse_key: "updated_score"}
+    response = gcm.send([user.device_token], options)
+    Rails.logger.debug response.inspect
+  end
+
   def get_owner_user
+    User.where(entity_type: 'PetOwner', entity_id: self.pet_owner.app_id).first
+  end
+
+  def get_status_type
+    case status_cd
+      when 20
+        return 'job_rejected'
+      when 30
+        return 'job_accepted'
+    end
+  end
+
+  def get_sitter_user
     User.where(entity_type: 'Sitter', entity_id: self.sitter.app_id).first
   end
 
