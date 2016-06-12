@@ -34,7 +34,6 @@ class PetOwner < ActiveRecord::Base
       complement: self.complement, city: self.city, state: self.state,
       latitude: self.latitude.to_d, longitude: self.longitude.to_d, phone: self.phone,
       photo: { app_id: self.photo.app_id, image: self.photo.image.url },
-      pets: self.pets.map(&:pet_json),
-      profile_photos: self.profile_photos.map { |p| { app_id: p.app_id, image: p.image.url }}}
+      pets: self.pets.map(&:pet_json)}
   end
 end
