@@ -45,7 +45,8 @@ class Sitter < ActiveRecord::Base
      about_me: self.about_me, street: self.street, address_number: self.address_number, cep: self.cep,
      complement: self.complement, city: self.city, state: self.state,
      value_hour: self.value_hour.to_d, latitude: self.latitude.to_d, longitude: self.longitude.to_d,
-     phone: self.phone, rate_avg: self.rate_avg, animals: self.animals.map { |a| {id: a.id, name: a.name} },
+     phone: self.phone, rate_avg: self.rate_avg, contacts: self.contacts.map { |c| c.contact_json },
+     animals: self.animals.map { |a| {id: a.id, name: a.name} },
      photo: {app_id: self.photo.app_id, image: self.photo.image.url },
      profile_photos: self.profile_photos.map { |p| {app_id: p.app_id, image: p.image.url } }}
   end
