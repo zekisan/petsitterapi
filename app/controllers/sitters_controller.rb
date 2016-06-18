@@ -77,7 +77,7 @@ class SittersController < ApplicationController
     photo = Photo.create(app_id: params[:photo_app_id], image: params[:image])
     sitter = Sitter.find_by_app_id(params[:app_id])
     sitter.update(photo: photo)
-    Contact.create_contacts_for_sitter(sitter)
+    #Contact.create_contacts_for_sitter(sitter)
     render json: 'ok'
   end
 
