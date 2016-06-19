@@ -6,7 +6,7 @@ module Concerns
       sitters_for_animals = get_sitters_by_animals(animals)
       sitters_for_animals.all.map do |s|
         s if distance_between_points(self.latitude, self.longitude, s.latitude, s.longitude) <= 20
-      end.compact
+      end.compact.uniq
     end
 
     def get_sitters_by_animals(animals)
